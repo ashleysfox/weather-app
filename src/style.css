@@ -1,0 +1,103 @@
+body {
+  font-family: "Ubuntu Mono", monospace;
+  /*min-width: 660px;*/
+  background-color: rgb(245, 241, 236);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Encode Sans Expanded", sans-serif;
+}
+
+h1 {
+  font-size: 150px;
+  margin: 15px 0;
+  line-height: 140px;
+}
+
+h2 {
+  font-size: 15px;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+i {
+  transition: all 150ms ease-in;
+}
+
+a {
+  color: #15615d;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+button {
+  background-color: #e78227;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+#search-field {
+  width: 75%;
+}
+
+.next-day-row i:hover {
+  color: #e78227;
+}
+
+.search-bar-col {
+  margin-bottom: 50px;
+}
+
+.next-days-section {
+  padding: 50px 70px 50px 70px;
+}
+
+.container {
+  max-width: none;
+}
+
+.today-section {
+  background-color: #a2dfc4;
+  background: url("../images/sky2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px 70px 50px 70px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.next-weather {
+  text-align: right;
+  color: #e78227;
+}
+
+.next-day-row,
+.next-weather {
+  padding-top: 10px;
+}
+
+.sun-icon {
+  font-size: 70px;
+  display: block;
+  text-align: right;
+  color: #e78227;
+}
+
+.further-details {
+  margin-top: 50px;
+}
+
+.further-details-item {
+  margin-right: 25px;
+}

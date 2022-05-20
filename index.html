@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@900&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/c92d59f58b.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <!--Top Section-->
+    <div class="row today-section">
+      <!--Search Bar-->
+      <div class="col container">
+        <div class="row">
+          <div class="col-12 search-bar-col">
+            <form id="search-form">
+              <input
+                type="search"
+                placeholder="Search for your City"
+                id="search-field"
+              />
+              <input
+                type="submit"
+                id="submit-button"
+                value="🔎"
+              >
+            </form>
+            <button id="current-location">Current Location</button>
+          </div>
+        </div>
+        <!--Today Section-->
+        <div class="row">
+        <div class="col-7">
+          <h2 class="current-city" id="city-heading">Corona, CA</h2>
+          <h1 class="current-temperature" id="current-temperature">75°</h1><span class="further-details"><a href="#" id="celcius">C°</a>  /  <a href="#" id="fahrenheit">F°</a></span>
+          <h3 class="date-today" id="date-today">Monday, April 8</h3>
+        </div>
+        <div class="col-5 weather-type">
+            <i class="fa-solid fa-sun sun-icon"></i>
+        </div>
+        </div>
+        <div>
+          <p class="further-details">
+            <span class="further-details-item"><i class="fa-solid fa-arrow-down"></i> Low: 58°</span>
+            <span class="further-details-item"><i class="fa-solid fa-droplet"></i> Precipitation: 0%</span>
+            <span class="further-details-item"><i class="fa-solid fa-wind"></i> Wind: 16mph</span>
+          </p>
+        </div>
+      </div>
+      </div>
+
+      <!--Next 5 Days Section-->
+      <div class="row next-days-section">
+        <h3 class="next-days-header">Next 5 Days:</h2>
+        <div class="col-7 next-day-row">
+          <span><i class="fa-solid fa-sun"></i> Tuesday, April 19</span>
+        </div>
+        <div class="col-5 next-weather"><strong>78°</strong>/58°</div>
+        <div class="col-7 next-day-row">
+          <span><i class="fa-solid fa-cloud-sun"></i> Wednesday, April 20</span>
+        </div>
+        <div class="col-5 next-weather"><strong>72°</strong>/56°</div>
+        <div class="col-7 next-day-row">
+          <span><i class="fa-solid fa-cloud"></i> Thursday, April 21</span>
+        </div>
+        <div class="col-5 next-weather"><strong>64°</strong>/46°</div>
+        <div class="col-7 next-day-row">
+          <span><i class="fa-solid fa-wind"></i> Friday, April 22</span>
+        </div>
+        <div class="col-5 next-weather"><strong>62°</strong>/49°</div>
+        <div class="col-7 next-day-row">
+          <span
+            ><i class="fa-solid fa-cloud-showers-heavy"></i> Saturday, April
+            23</span
+          >
+        </div>
+        <div class="col-5 next-weather"><strong>53°</strong>/43°</div>
+      </div>
+    </div>
+  </div>
+  </body>
+  <script src="script/app.js"></script>
+</html>
