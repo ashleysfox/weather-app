@@ -46,12 +46,37 @@ function replaceWeatherData(event) {
 
   function showNewWeather(response) {
     console.log(response);
+    //Update Degrees, City, Country
     let currentTemp = Math.round(response.data.main.temp);
     let tempH1 = document.querySelector("h1");
     tempH1.innerHTML = `${currentTemp}°`;
     newCityHeading.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
-  }
+  
+  //Update Wind
+  let windData = Math.round(response.data.wind.speed);
+  let wind = document.querySelector("#wind");
+  wind.innerHTML = `${windData}`;
+
+  //Update Humidity
+  let humidityData = Math.round(response.data.main.humidity);
+  let humidity = document.querySelector("#humidity");
+  humidity.innerHTML = `${humidityData}%`;
+  
+//Update Description
+let descriptionData = (response.data.weather[0].description).toUpperCase();
+let description = document.querySelector("#weather-description");
+description.innerHTML = `${descriptionData}`;
+
+
+if (descriptionData.includes("CLOUDS")) {
+let weatherIcon = document.querySelector("#weather-icon");
+weatherIcon.innerHTML = `<i class="fa-solid fa-cloud sun-icon"></i>`;
+} else {
+  let weatherIcon = document.querySelector("#weather-icon");
+  weatherIcon.innerHTML = `<i class="fa-solid fa-sun sun-icon"></i>`;
 }
+
+}}
 
 searchField.addEventListener("submit", replaceWeatherData);
 
