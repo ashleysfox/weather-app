@@ -29,17 +29,10 @@
       <div class="col container">
         <div class="row">
           <div class="col-12 search-bar-col">
-            <form id="search-form">
-              <input
-                type="search"
-                placeholder="Search for your City"
-                id="search-field"
-              />
-              <input
-                type="submit"
-                id="submit-button"
-                value="🔎"
-              >
+            <!--Search Bar / Location Button-->
+            <form class="input-group mb-3" id="search-form">
+              <input type="search" class="form-control" placeholder="Search for your City" aria-label="Search for your City" aria-describedby="button-addon2" id="search-field">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2, submit-button"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <button id="current-location">Current Location</button>
           </div>

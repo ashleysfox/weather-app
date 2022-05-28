@@ -71,7 +71,7 @@ i {
 }
 
 a {
-  color: #15615d;
+  color: #34a2d5;
   font-weight: 900;
   text-decoration: none;
 }
@@ -83,19 +83,25 @@ button {
   display: inline;
   font-size: 11px;
   letter-spacing: 1px;
-  margin-top: 10px;
+/*  margin-top: 10px;*/
   padding: 10px 15px;
 
-}
-
-#search-form {
-  display: inline;
 }
 
 #search-field {
   width: 50%;
 }
 
+.btn-outline-secondary {
+  color: #5ec2f0;
+  border-color: #34a2d5;
+}
+
+.btn-outline-secondary:hover {
+  color: #fff;
+  background-color: #5ec2f0;
+  border-color: #34a2d5;
+}
 .search-bar-col {
   margin-bottom: 30px;
 }
