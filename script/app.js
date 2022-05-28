@@ -67,7 +67,7 @@ let descriptionData = (response.data.weather[0].description).toUpperCase();
 let description = document.querySelector("#weather-description");
 description.innerHTML = `${descriptionData}`;
 
-
+//Update Icon
 if (descriptionData.includes("CLOUDS")) {
 let weatherIcon = document.querySelector("#weather-icon");
 weatherIcon.innerHTML = `<i class="fa-solid fa-cloud sun-icon"></i>`;
@@ -80,7 +80,7 @@ weatherIcon.innerHTML = `<i class="fa-solid fa-cloud sun-icon"></i>`;
 
 searchField.addEventListener("submit", replaceWeatherData);
 
-//Current Location Actions
+//Show current location weather on click
 function showWeather(response) {
   console.log(response.data.name);
   let currentTemp = Math.round(response.data.main.temp);
@@ -107,6 +107,52 @@ function getLocation() {
 
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getLocation);
+
+//Show Current Location on Load
+function showCurrentWeather(response) {
+  console.log(response.data.name);
+  let currentTemp = Math.round(response.data.main.temp);
+  let tempH1 = document.querySelector("h1");
+  tempH1.innerHTML = `${currentTemp}°`;
+  let cityHeading = document.querySelector("#city-heading");
+  let searchedhCity = `${response.data.name}`;
+  cityHeading.innerHTML = `${searchedhCity}, ${response.data.sys.country}`;
+    //Update Wind
+    let windData = Math.round(response.data.wind.speed);
+    let wind = document.querySelector("#wind");
+    wind.innerHTML = `${windData}`;
+  
+    //Update Humidity
+    let humidityData = Math.round(response.data.main.humidity);
+    let humidity = document.querySelector("#humidity");
+    humidity.innerHTML = `${humidityData}%`;
+    
+  //Update Description
+  let descriptionData = (response.data.weather[0].description).toUpperCase();
+  let description = document.querySelector("#weather-description");
+  description.innerHTML = `${descriptionData}`;
+  
+  //Update Icon
+  if (descriptionData.includes("CLOUDS")) {
+  let weatherIcon = document.querySelector("#weather-icon");
+  weatherIcon.innerHTML = `<i class="fa-solid fa-cloud sun-icon"></i>`;
+  } else {
+    let weatherIcon = document.querySelector("#weather-icon");
+    weatherIcon.innerHTML = `<i class="fa-solid fa-sun sun-icon"></i>`;
+  }
+}
+  //Gathering location info
+  navigator.geolocation.getCurrentPosition(showPosition);
+  function showPosition(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+
+    let unit = "imperial";
+    let apiKey = "d99d532213301980bc66856f61cac4e9";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
+    axios.get(apiUrl).then(showCurrentWeather);
+  }
+ 
 
 //Update BKG Gradient based on time
 
