@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
+    <div class="wrapper">
     <!--Top Section-->
     <div class="row today-section">
       <!--Search Bar-->
@@ -48,18 +49,18 @@
         <div class="col-7">
           <h2 class="current-city" id="city-heading">Corona, CA</h2>
           <h1 class="current-temperature" id="current-temperature">75°</h1><span class="further-details"><a href="#" id="celcius">C°</a>  /  <a href="#" id="fahrenheit">F°</a></span>
-          <h3 class="date-today" id="date-today">Monday, April 8</h3>
         </div>
         <div class="col-5 weather-type">
-            <i class="fa-solid fa-sun sun-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
         </div>
-        </div>
-        <div>
-          <ul class="further-details">
-            <li class="further-details-item"><i class="fa-solid fa-arrow-down"></i> Low: 58°</li>
-            <li class="further-details-item"><i class="fa-solid fa-droplet"></i> Precipitation: 0%</li>
-            <li class="further-details-item"><i class="fa-solid fa-wind"></i> Wind: 16mph</li>
-          </ul>
+      </div>
+      <div>
+          <h3 class="date-today" id="date-today">Monday, April 8</h3>
+          <p class="further-details">
+            <span class="further-details-item"><i class="fa-solid fa-arrow-down"></i> Low: 58°</span>
+            <span class="further-details-item"><i class="fa-solid fa-droplet"></i> Precipitation: 0%</span>
+            <span class="further-details-item"><i class="fa-solid fa-wind"></i> Wind: 16mph</span>
+          </p>
         </div>
       </div>
       </div>
@@ -93,6 +94,7 @@
       </div>
     </div>
   </div>
+</div>
   </body>
   <script src="script/app.js"></script>
 </html>

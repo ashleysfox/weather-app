@@ -1,7 +1,11 @@
-body {
+.wrapper {
+  border: solid 3px black;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.101);
   font-family: "Ubuntu Mono", monospace;
-  /*min-width: 660px;*/
-  background-color: rgb(245, 241, 236);
+  margin: 30px auto;
+  min-width: 475px;
+  max-width: 650px;
 }
 
 h1,
@@ -12,15 +16,15 @@ h3 {
 
 h1 {
   font-size: 150px;
-  margin: 15px 0;
-  line-height: 140px;
+  line-height: 130px;
+  margin: 10px 0;
 }
 
 h2 {
   font-size: 15px;
+  letter-spacing: 2px;
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
 h3 {
@@ -38,48 +42,54 @@ a {
 }
 
 button {
-  background-color: #e78227;
+  background-color: #5ec2f0;
   border: none;
   border-radius: 20px;
-  padding: 10px 15px;
-  letter-spacing: 1px;
+  display: inline;
   font-size: 11px;
+  letter-spacing: 1px;
   margin-top: 10px;
+  padding: 10px 15px;
+
+}
+
+#search-form {
+  display: inline;
 }
 
 #search-field {
-  width: 75%;
-}
-
-.next-day-row i:hover {
-  color: #e78227;
+  width: 50%;
 }
 
 .search-bar-col {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+}
+
+.next-day-row i:hover {
+  color: #5ec2f0;
 }
 
 .next-days-section {
-  padding: 50px 70px 50px 70px;
+  padding: 0 50px 40px 50px;
 }
 
 .container {
   max-width: none;
 }
 
+
 .today-section {
-  background-color: #a2dfc4;
-  background: url("../images/sky2.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 50px 70px 50px 70px;
-  border-bottom-left-radius: 100px;
-  border-bottom-right-radius: 100px;
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  border-radius: 20px 20px 100px 100px;
+  margin: 0 auto 50px auto;
+  max-width: 650px;
+  min-width: 475px;
+  padding: 50px 50px 40px 50px;
 }
 
 .next-weather {
   text-align: right;
-  color: #e78227;
+  color: #5ec2f0;
 }
 
 .next-day-row,
@@ -88,14 +98,14 @@ button {
 }
 
 .sun-icon {
-  font-size: 70px;
+  color: #5ec2f0;
   display: block;
+  font-size: 70px;
   text-align: right;
-  color: #e78227;
 }
 
 .further-details {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .further-details-item {
