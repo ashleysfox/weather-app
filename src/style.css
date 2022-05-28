@@ -13,11 +13,26 @@ h3 {
   font-family: "Encode Sans Expanded", sans-serif;
 }
 
-h1 {
-  font-size: 150px;
-  line-height: 130px;
-  margin: 10px 0;
+@media only screen and (max-width: 450px) {
+
+  h1 {
+    font-size: 100px;
+    line-height: 80px;
+    margin: 10px 0;
+  }
 }
+
+@media only screen and (min-width: 450px) {
+
+  h1 {
+    font-size: 150px;
+    line-height: 130px;
+    margin: 10px 0;
+  }
+
+}
+
+
 
 h2 {
   font-size: 15px;
