@@ -1,28 +1,19 @@
-.wrapper {
-  border: solid 3px black;
-  border-radius: 20px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.101);
-  font-family: "Ubuntu Mono", monospace;
-  margin: 30px auto;
-  max-width: 650px;
-}
-
-h1,
-h2,
-h3 {
-  font-family: "Encode Sans Expanded", sans-serif;
-}
-
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 460px) {
 
   h1 {
     font-size: 100px;
     line-height: 80px;
     margin: 10px 0;
   }
+
+  .wrapper {
+    border-radius: 20px;
+    font-family: "Ubuntu Mono", monospace;
+    margin: 30px auto;
+  }
 }
 
-@media only screen and (min-width: 450px) {
+@media only screen and (min-width: 460px) {
 
   h1 {
     font-size: 150px;
@@ -30,6 +21,21 @@ h3 {
     margin: 10px 0;
   }
 
+  .wrapper {
+    border: solid 3px black;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.101);
+    font-family: "Ubuntu Mono", monospace;
+    margin: 30px auto;
+    max-width: 650px;
+  }
+
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Encode Sans Expanded", sans-serif;
 }
 
 
