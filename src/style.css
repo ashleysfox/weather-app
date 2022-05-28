@@ -45,7 +45,7 @@
     border-radius: 20px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.101);
     font-family: "Ubuntu Mono", monospace;
-    margin: 30px auto;
+    margin: 30px auto 15px auto;
     max-width: 650px;
   }
 
@@ -168,4 +168,11 @@ button {
 #weather-description {
   letter-spacing: 2px;
   font-weight: 600;
+}
+
+.footer-text {
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 12px;
+  text-align: center;
+  margin: 0 auto 20px auto;
 }
