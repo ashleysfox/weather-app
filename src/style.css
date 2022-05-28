@@ -4,7 +4,6 @@
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.101);
   font-family: "Ubuntu Mono", monospace;
   margin: 30px auto;
-  min-width: 475px;
   max-width: 650px;
 }
 
@@ -83,8 +82,8 @@ button {
   border-radius: 20px 20px 100px 100px;
   margin: 0 auto 50px auto;
   max-width: 650px;
-  min-width: 475px;
   padding: 50px 50px 40px 50px;
+
 }
 
 .next-weather {
