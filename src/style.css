@@ -15,8 +15,12 @@
     background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
     border-radius: 0 0 100px 100px;
     margin: 0 auto 50px auto;
-    padding: 50px 50px 40px 50px;
+    padding: 50px 30px 40px 30px;
   
+  }
+
+  .next-days-section {
+    padding: 50px 30px 40px 30px;
   }
 }
 
@@ -44,6 +48,10 @@
     max-width: 650px;
     padding: 50px 50px 40px 50px;
   
+  }
+
+  .next-days-section {
+    padding: 0 60px 40px 60px;
   }
 
 }
@@ -108,10 +116,6 @@ button {
 
 .next-day-row i:hover {
   color: #5ec2f0;
-}
-
-.next-days-section {
-  padding: 0 50px 40px 50px;
 }
 
 .container {
