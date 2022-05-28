@@ -9,7 +9,14 @@
   .wrapper {
     border-radius: 20px;
     font-family: "Ubuntu Mono", monospace;
-    margin: 30px auto;
+  }
+
+  .today-section {
+    background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    border-radius: 0 0 100px 100px;
+    margin: 0 auto 50px auto;
+    padding: 50px 50px 40px 50px;
+  
   }
 }
 
@@ -28,6 +35,15 @@
     font-family: "Ubuntu Mono", monospace;
     margin: 30px auto;
     max-width: 650px;
+  }
+
+  .today-section {
+    background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    border-radius: 20px 20px 100px 100px;
+    margin: 0 auto 50px auto;
+    max-width: 650px;
+    padding: 50px 50px 40px 50px;
+  
   }
 
 }
@@ -94,16 +110,6 @@ button {
 
 .container {
   max-width: none;
-}
-
-
-.today-section {
-  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-  border-radius: 20px 20px 100px 100px;
-  margin: 0 auto 50px auto;
-  max-width: 650px;
-  padding: 50px 50px 40px 50px;
-
 }
 
 .next-weather {
