@@ -1,3 +1,4 @@
+//Add Current Date/Time
 let newDate = new Date();
 
 let days = [
@@ -32,6 +33,7 @@ todaysDate.innerHTML = `${days[newDate.getDay()]}, ${
 
 console.log(newDate);
 
+//User Search Input Actions
 let searchField = document.querySelector("#search-form");
 function replaceWeatherData(event) {
   event.preventDefault();
@@ -53,6 +55,7 @@ function replaceWeatherData(event) {
 
 searchField.addEventListener("submit", replaceWeatherData);
 
+//Current Location Actions
 function showWeather(response) {
   console.log(response.data.name);
   let currentTemp = Math.round(response.data.main.temp);
@@ -80,21 +83,11 @@ function getLocation() {
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getLocation);
 
-/*function replaceCelcius(event) {
-  event.preventDefault();
-  let currentCelcius = document.querySelector("#current-temperature");
-  currentCelcius.innerHTML = "23°";
-}
+//Update BKG Gradient based on time
 
-let celcius = document.querySelector("#celcius");
-celcius.addEventListener("click", replaceCelcius);
-
-function replaceFahrenheit(event) {
-  event.preventDefault();
-  let currentFahrenheit = document.querySelector("#current-temperature");
-  currentFahrenheit.innerHTML = "75°";
-}
-
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", replaceFahrenheit);
-*/
+let bkgGradient = document.querySelector('#today-section');
+let hour = newDate.getHours();
+if (hour > 17) {
+bkgGradient.classList.remove("today-section-day");
+bkgGradient.classList.add("today-section-night");
+} 
