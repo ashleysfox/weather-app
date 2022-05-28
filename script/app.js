@@ -78,6 +78,7 @@ weatherIcon.innerHTML = `<i class="fa-solid fa-cloud sun-icon"></i>`;
 
 }}
 
+
 searchField.addEventListener("submit", replaceWeatherData);
 
 //Show current location weather on click
@@ -133,7 +134,7 @@ function showCurrentWeather(response) {
   description.innerHTML = `${descriptionData}`;
   
   //Update Icon
-  if (descriptionData.includes("CLOUDS")) {
+  if (descriptionData.includes("CLOUD")) {
   let weatherIcon = document.querySelector("#weather-icon");
   weatherIcon.innerHTML = `<i class="fa-solid fa-cloud sun-icon"></i>`;
   } else {

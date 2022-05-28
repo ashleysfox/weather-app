@@ -163,3 +163,8 @@ button {
 .further-details-item {
   margin-right: 25px;
 }
+
+#weather-description {
+  letter-spacing: 2px;
+  font-weight: 600;
+}
