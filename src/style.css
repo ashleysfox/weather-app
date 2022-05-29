@@ -95,24 +95,24 @@ i {
   transition: all 150ms ease-in;
 }
 
-.active {
+.a {
   color: #34a2d5;
   font-weight: 900;
 }
 
-.active:hover {
+.a:hover {
   color: #0a58ca;
   text-decoration: underline;
 }
 
 
-a {
+.inactive {
   color: black;
   font-weight: 900;
   text-decoration: none;
 }
 
-a:hover {
+.inactive:hover {
   color: black;
   text-decoration: none;
   cursor: default;
