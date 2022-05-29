@@ -95,13 +95,13 @@ i {
   transition: all 150ms ease-in;
 }
 
-.a {
+a {
   color: #34a2d5;
   font-weight: 900;
   text-decoration: none;
 }
 
-.a:hover {
+a:hover {
   color: #0a58ca;
   text-decoration: underline;
 }
