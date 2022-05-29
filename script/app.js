@@ -81,10 +81,11 @@ weatherIcon.innerHTML = `<i class="fa-solid fa-cloud sun-icon"></i>`;
 
 searchField.addEventListener("submit", replaceWeatherData);
 
+
 //Show current location weather on click
 function showWeather(response) {
   console.log(response.data.name);
-  let currentTemp = Math.round(response.data.main.temp);
+  currentTemp = Math.round(response.data.main.temp);
   let tempH1 = document.querySelector("h1");
   tempH1.innerHTML = `${currentTemp}°`;
   let cityHeading = document.querySelector("#city-heading");
@@ -92,19 +93,27 @@ function showWeather(response) {
   cityHeading.innerHTML = `${searchedhCity}, ${response.data.sys.country}`;
 }
 
+
+
 function getLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
   alert("Fetching location...");
   function showPosition(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-
-    let unit = "imperial";
+    let unit = "imperial"
     let apiKey = "d99d532213301980bc66856f61cac4e9";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
     axios.get(apiUrl).then(showWeather);
   }
 }
+
+
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+let celsiusLink = document.querySelector("#celsius");
+
+celsiusLink.addEventListener("click", celsiusActive);
 
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getLocation);
@@ -163,3 +172,6 @@ if (hour > 17) {
 bkgGradient.classList.remove("today-section-day");
 bkgGradient.classList.add("today-section-night");
 } 
+
+
+

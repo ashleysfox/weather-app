@@ -95,10 +95,27 @@ i {
   transition: all 150ms ease-in;
 }
 
-a {
+.active {
   color: #34a2d5;
   font-weight: 900;
+}
+
+.active:hover {
+  color: #0a58ca;
+  text-decoration: underline;
+}
+
+
+a {
+  color: black;
+  font-weight: 900;
   text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+  cursor: default;
 }
 
 button {
@@ -176,3 +193,4 @@ button {
   text-align: center;
   margin: 0 auto 20px auto;
 }
+
