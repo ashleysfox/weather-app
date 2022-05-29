@@ -108,16 +108,9 @@ function getLocation() {
   }
 }
 
-function celsiusActive(event) {
-  event.preventDefault();
-  let tempHeading = document.querySelector("#current-temperature");
-  tempHeading.innerHTML = `${tempHeading}-32*.5556`;
-}
 
-let fahrenheitLink = document.querySelector("#fahrenheit");
-let celsiusLink = document.querySelector("#celsius");
 
-celsiusLink.addEventListener("click", celsiusActive);
+
 
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getLocation);
