@@ -98,6 +98,7 @@ i {
 .a {
   color: #34a2d5;
   font-weight: 900;
+  text-decoration: none;
 }
 
 .a:hover {
