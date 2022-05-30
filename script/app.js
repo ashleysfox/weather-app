@@ -67,14 +67,9 @@ let descriptionData = (response.data.weather[0].description).toUpperCase();
 let description = document.querySelector("#weather-description");
 description.innerHTML = `${descriptionData}`;
 
-//Update Icon
-if (descriptionData.includes("CLOUDS")) {
-let weatherIcon = document.querySelector("#weather-icon");
-weatherIcon.innerHTML = `<i class="fa-solid fa-cloud sun-icon"></i>`;
-} else {
-  let weatherIcon = document.querySelector("#weather-icon");
-  weatherIcon.innerHTML = `<i class="fa-solid fa-sun sun-icon"></i>`;
-}
+ //Update Icon
+ let weatherIcon = document.querySelector("#weather-icon");
+ weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
 }}
 
@@ -93,8 +88,6 @@ function showWeather(response) {
   cityHeading.innerHTML = `${searchedhCity}, ${response.data.sys.country}`;
 }
 
-
-
 function getLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
   alert("Fetching location...");
@@ -107,10 +100,6 @@ function getLocation() {
     axios.get(apiUrl).then(showWeather);
   }
 }
-
-
-
-
 
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getLocation);
@@ -140,13 +129,8 @@ function showCurrentWeather(response) {
   description.innerHTML = `${descriptionData}`;
   
   //Update Icon
-  if (descriptionData.includes("CLOUD")) {
   let weatherIcon = document.querySelector("#weather-icon");
-  weatherIcon.innerHTML = `<i class="fa-solid fa-cloud sun-icon"></i>`;
-  } else {
-    let weatherIcon = document.querySelector("#weather-icon");
-    weatherIcon.innerHTML = `<i class="fa-solid fa-sun sun-icon"></i>`;
-  }
+  weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
   //Gathering location info
   navigator.geolocation.getCurrentPosition(showPosition);
