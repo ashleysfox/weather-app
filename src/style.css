@@ -107,16 +107,9 @@ a:hover {
 }
 
 
-.inactive {
+.active {
   color: black;
-  font-weight: 900;
-  text-decoration: none;
-}
-
-.inactive:hover {
-  color: black;
-  text-decoration: none;
-  cursor: default;
+  pointer-events: none;
 }
 
 button {
