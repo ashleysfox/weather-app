@@ -44,8 +44,13 @@ function showWeather(response) {
       //Update Wind
       let windData = Math.round(response.data.wind.speed);
       let wind = document.querySelector("#wind");
-      wind.innerHTML = `${windData}`;
-    
+
+      if (apiUrl.includes("imperial")) {
+        wind.innerHTML = `${windData}` + `${windUnit[0]}`;
+      } else {
+        wind.innerHTML = `${windData}` + `${windUnit[1]}`;
+      }
+
       //Update Humidity
       let humidityData = Math.round(response.data.main.humidity);
       let humidity = document.querySelector("#humidity");
@@ -66,7 +71,7 @@ let searchField = document.querySelector("#search-form");
 function weatherDataSearch(event) {
   event.preventDefault();
   let newSearchedCity = document.querySelector("#search-field").value;
-  apiUrl = apiUrl + `&q=${newSearchedCity}`;
+  apiUrl = apiUrl + `&q=${newSearchedCity}&units=${unit[0]}`;
   axios.get(apiUrl).then(showWeather);
 }
 searchField.addEventListener("submit", weatherDataSearch);
@@ -78,7 +83,7 @@ function getLocation() {
   function showPosition(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-    apiUrl = apiUrl + `&lat=${lat}&lon=${lon}`;
+    apiUrl = apiUrl + `&lat=${lat}&lon=${lon}&units=${unit[0]}`;
     axios.get(apiUrl).then(showWeather);
 }
 }
@@ -98,16 +103,17 @@ bkgGradient.classList.remove("today-section-day");
 bkgGradient.classList.add("today-section-night");
 } 
 
-//Celsius to Fahrenheit Conversion 
+//Celsius to Fahrenheit Toggle 
 function showCelsiusTemp(event){
   event.preventDefault();
-  console.log(apiURL);
-  apiURL.replace("imperial", "metric");
-  console.log(apiURL);
+  apiUrl = apiUrl.replace(`${unit[0]}`, `${unit[1]}`);
+  axios.get(apiUrl).then(showWeather);
 }
 
 function showFahrenheitTemp(event){
   event.preventDefault();
+  apiUrl = apiUrl.replace(`${unit[1]}`, `${unit[0]}`);
+  axios.get(apiUrl).then(showWeather);
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
@@ -116,7 +122,14 @@ fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
 //Global Items
-let unit = "imperial"
+let unit = [
+  "imperial",
+  "metric",
+];
+let windUnit = [
+  "mph",
+  "km/h",
+] ;
 let apiKey = "d99d532213301980bc66856f61cac4e9";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?&appid=${apiKey}&units=${unit}`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?&appid=${apiKey}`;
 let tempHeading = document.querySelector("#current-temperature");
