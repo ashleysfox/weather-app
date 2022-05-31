@@ -27,11 +27,11 @@ let months = [
 ];
 
 let todaysDate = document.querySelector("#date-today");
-function displayDate() {
+
 todaysDate.innerHTML = `${days[newDate.getDay()]}, ${
   months[newDate.getMonth()]
 } ${newDate.getDate()} at ${newDate.getHours()}:${newDate.getMinutes()}`;
-}
+
 console.log(newDate);
 
 //User Search Input Actions
