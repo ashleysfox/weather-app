@@ -44,12 +44,14 @@ function showWeather(response) {
 
       //Update Wind
       windData = Math.round(response.data.wind.speed);
-  
 
-      if (apiUrl.includes("imperial")) {
+      if (fahrenheitLink.classList.contains("active")) {
         wind.innerHTML = `${windData}` + `${windUnit[0]}`;
-      } else {
+
+      } else 
+      if (celsiusLink.classList.contains("active")) {
         wind.innerHTML = `${windData}` + `${windUnit[1]}`;
+
       }
 
       //Update Humidity
@@ -73,10 +75,11 @@ function weatherDataSearch(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("#search-field").value;
 
-  if (celsiusLink.classList.includes("active")) {
-    let newUnit = unit[1];
-  } else {
-    let newUnit = unit[0];
+  if (celsiusLink.classList.contains("active")) {
+    newUnit = unit[1];
+  } else 
+  if (fahrenheitLink.classList.contains("active")) {
+    newUnit = unit[0];
   }
 
   apiUrl = apiUrl + `&q=${searchedCity}&units=${newUnit}`;
@@ -91,7 +94,13 @@ function getLocation() {
   function showPosition(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-    apiUrl = apiUrl + `&lat=${lat}&lon=${lon}&units=${unit[0]}`;
+
+    if (celsiusLink.classList.contains("active")) {
+      newUnit = unit[1];
+    } else {
+      newUnit = unit[0];
+    }
+    apiUrl = apiUrl + `&lat=${lat}&lon=${lon}&units=${newUnit}`;
     axios.get(apiUrl).then(showWeather);
 }
 }
@@ -117,13 +126,10 @@ function showCelsiusTemp(event){
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   apiUrl = apiUrl.replace(`${unit[0]}`, `${unit[1]}`);
-  wind.innerHTML = `${windData}` + `${windUnit[1]}`;
   if (document.querySelector("#search-field").value.length == 0) {
    axios.get(apiUrl).then(showWeather);
-   console.log("IF");
   } else {
     weatherDataSearch(event);
-    console.log("else");
   }
 }
 
@@ -133,10 +139,10 @@ function showFahrenheitTemp(event){
   fahrenheitLink.classList.add("active");
   apiUrl = apiUrl.replace(`${unit[1]}`, `${unit[0]}`);
   if (document.querySelector("#search-field").value.length == 0) {
-    axios.get(apiUrl).then(showWeather);
-   } else {
-     weatherDataSearch(event);
-   }
+   axios.get(apiUrl).then(showWeather);
+  } else {
+    weatherDataSearch(event);
+  }
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
@@ -155,6 +161,7 @@ let windUnit = [
 ] ;
 let wind = document.querySelector("#wind");
 let windData = null;
+let newUnit = null;
 let apiKey = "d99d532213301980bc66856f61cac4e9";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?&appid=${apiKey}`;
 let tempHeading = document.querySelector("#current-temperature");
