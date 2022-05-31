@@ -44,9 +44,13 @@ function showWeather(response) {
 
       //Update Wind
       windData = Math.round(response.data.wind.speed);
-      wind.innerHTML = `${windData}` + `${windUnit[0]}`;
+  
 
-      if 
+      if (apiUrl.includes("imperial")) {
+        wind.innerHTML = `${windData}` + `${windUnit[0]}`;
+      } else {
+        wind.innerHTML = `${windData}` + `${windUnit[1]}`;
+      }
 
       //Update Humidity
       let humidityData = Math.round(response.data.main.humidity);
@@ -68,7 +72,14 @@ let searchField = document.querySelector("#search-form");
 function weatherDataSearch(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("#search-field").value;
-  apiUrl = apiUrl + `&q=${searchedCity}&units=${unit[0]}`;
+
+  if (celsiusLink.classList.includes("active")) {
+    let newUnit = unit[1];
+  } else {
+    let newUnit = unit[0];
+  }
+
+  apiUrl = apiUrl + `&q=${searchedCity}&units=${newUnit}`;
   axios.get(apiUrl).then(showWeather);
 }
 searchField.addEventListener("submit", weatherDataSearch);
@@ -133,7 +144,7 @@ let celsiusLink = document.querySelector("#celsius");
 fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
-//Global Items
+//Msc Global Items
 let unit = [
   "imperial",
   "metric",
