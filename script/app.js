@@ -68,8 +68,6 @@ description.innerHTML = `${descriptionData}`;
  //Update Icon
  weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
-//Update Time
-newDate = changeTimeZone(new Date(), 'America/Los_Angeles');
 
 }}
 
@@ -84,6 +82,24 @@ function showWeather(response) {
   tempHeading.innerHTML = `${currentTemp}`;
   let searchedhCity = `${response.data.name}`;
   cityHeading.innerHTML = `${searchedhCity}, ${response.data.sys.country}`;
+
+    //Update Wind
+    windData = Math.round(response.data.wind.speed);
+    wind.innerHTML = `${windData}` + `${windUnit[0]}`;
+  
+    celsiusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+  
+    //Update Humidity
+    let humidityData = Math.round(response.data.main.humidity);
+    humidity.innerHTML = `${humidityData}%`;
+    
+  //Update Description
+  let descriptionData = (response.data.weather[0].description).toUpperCase();
+  description.innerHTML = `${descriptionData}`;
+  
+   //Update Icon
+   weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
 function getLocation() {
