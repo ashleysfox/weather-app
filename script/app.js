@@ -45,14 +45,12 @@ function replaceWeatherData(event) {
   function showNewWeather(response) {
     console.log(response);
     //Update Degrees, City, Country
-    let currentTemp = Math.round(response.data.main.temp);
-    let tempH1 = document.querySelector("h1");
-    tempH1.innerHTML = `${currentTemp}°`;
+    currentTemp = Math.round(response.data.main.temp);
+    tempHeading.innerHTML = `${currentTemp}`;
     newCityHeading.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   
   //Update Wind
-  let windData = Math.round(response.data.wind.speed);
-  let wind = document.querySelector("#wind");
+  windData = Math.round(response.data.wind.speed);
   wind.innerHTML = `${windData}` + `${windUnit[0]}`;
 
   celsiusLink.classList.remove("active");
@@ -60,16 +58,13 @@ function replaceWeatherData(event) {
 
   //Update Humidity
   let humidityData = Math.round(response.data.main.humidity);
-  let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${humidityData}%`;
   
 //Update Description
 let descriptionData = (response.data.weather[0].description).toUpperCase();
-let description = document.querySelector("#weather-description");
 description.innerHTML = `${descriptionData}`;
 
  //Update Icon
- let weatherIcon = document.querySelector("#weather-icon");
  weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
 }}
@@ -82,9 +77,7 @@ searchField.addEventListener("submit", replaceWeatherData);
 function showWeather(response) {
   console.log(response.data.name);
   currentTemp = Math.round(response.data.main.temp);
-  let tempH1 = document.querySelector("h1");
-  tempH1.innerHTML = `${currentTemp}°`;
-  let cityHeading = document.querySelector("#city-heading");
+  tempHeading.innerHTML = `${currentTemp}`;
   let searchedhCity = `${response.data.name}`;
   cityHeading.innerHTML = `${searchedhCity}, ${response.data.sys.country}`;
 }
@@ -106,16 +99,13 @@ locationButton.addEventListener("click", getLocation);
 //Show Current Location on Load
 function showCurrentWeather(response) {
   console.log(response.data.name);
-  let currentTemp = Math.round(response.data.main.temp);
-  let tempH1 = document.querySelector("h1");
-  tempH1.innerHTML = `${currentTemp}°`;
-  let cityHeading = document.querySelector("#city-heading");
+  currentTemp = Math.round(response.data.main.temp);
+  tempHeading.innerHTML = `${currentTemp}`;
   let searchedhCity = `${response.data.name}`;
   cityHeading.innerHTML = `${searchedhCity}, ${response.data.sys.country}`;
 
     //Update Wind
-    let windData = Math.round(response.data.wind.speed);
-    let wind = document.querySelector("#wind");
+    windData = Math.round(response.data.wind.speed);
     wind.innerHTML = `${windData}` + `${windUnit[0]}`;
 
     celsiusLink.classList.remove("active");
@@ -123,16 +113,13 @@ function showCurrentWeather(response) {
   
     //Update Humidity
     let humidityData = Math.round(response.data.main.humidity);
-    let humidity = document.querySelector("#humidity");
     humidity.innerHTML = `${humidityData}%`;
     
   //Update Description
   let descriptionData = (response.data.weather[0].description).toUpperCase();
-  let description = document.querySelector("#weather-description");
   description.innerHTML = `${descriptionData}`;
   
   //Update Icon
-  let weatherIcon = document.querySelector("#weather-icon");
   weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
   //Gathering location info
@@ -159,6 +146,10 @@ function showCelsiusTemp(event){
   event.preventDefault();
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
+  let celsiusTemp = (currentTemp - 32) * .5556;
+  tempHeading.innerHTML = Math.round(celsiusTemp);
+  let metricWindSpeed = Math.round(windData * 1.609);
+  wind.innerHTML = `${metricWindSpeed}` + `${windUnit[1]}`;
 
 }
 
@@ -166,7 +157,8 @@ function showFahrenheitTemp(event){
   event.preventDefault();
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-
+  tempHeading.innerHTML = currentTemp;
+  wind.innerHTML = `${windData}` + `${windUnit[0]}`;
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
@@ -185,3 +177,11 @@ let windUnit = [
 ] ;
 let apiKey = "d99d532213301980bc66856f61cac4e9";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?&appid=${apiKey}`;
+let currentTemp = null;
+let tempHeading = document.querySelector("#current-temperature");
+let wind = document.querySelector("#wind");
+let windData = null;
+let humidity = document.querySelector("#humidity");
+let description = document.querySelector("#weather-description");
+let weatherIcon = document.querySelector("#weather-icon");
+let cityHeading = document.querySelector("#city-heading");
