@@ -27,10 +27,11 @@ let months = [
 ];
 
 let todaysDate = document.querySelector("#date-today");
+function displayDate() {
 todaysDate.innerHTML = `${days[newDate.getDay()]}, ${
   months[newDate.getMonth()]
 } ${newDate.getDate()} at ${newDate.getHours()}:${newDate.getMinutes()}`;
-
+}
 console.log(newDate);
 
 //User Search Input Actions
@@ -67,6 +68,9 @@ description.innerHTML = `${descriptionData}`;
  //Update Icon
  weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
+//Update Time
+newDate = changeTimeZone(new Date(), 'America/Los_Angeles');
+
 }}
 
 
@@ -84,7 +88,6 @@ function showWeather(response) {
 
 function getLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
-  alert("Fetching location...");
   function showPosition(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
