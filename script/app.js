@@ -41,6 +41,9 @@ function showWeather(response) {
     let cityName = `${response.data.name}`;
     cityHeading.innerHTML = `${cityName}, ${response.data.sys.country}`;
 
+    celsiusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+
       //Update Wind
       windData = Math.round(response.data.wind.speed);
       wind.innerHTML = `${windData}` + `${windUnit[0]}`;
@@ -72,7 +75,6 @@ searchField.addEventListener("submit", weatherDataSearch);
 //Show current location weather on button click + load
 function getLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
-  alert("Fetching location...");
   function showPosition(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
@@ -111,10 +113,8 @@ function showFahrenheitTemp(event){
   event.preventDefault();
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  let fahrehheitTemp = (currentTemp / .5556) + 32;
-  tempHeading.innerHTML = Math.round(fahrehheitTemp);
-  let imperialWindSpeed = Math.round(windData / 1.609);
-  wind.innerHTML = `${imperialWindSpeed}` + `${windUnit[0]}`;
+  tempHeading.innerHTML = currentTemp;
+  wind.innerHTML = `${windData}` + `${windUnit[0]}`;
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
