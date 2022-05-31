@@ -33,11 +33,10 @@ todaysDate.innerHTML = `${days[newDate.getDay()]}, ${
 
 console.log(newDate);
 
-//Show Weather
-function showWeather(response) {
+//Show Weather on Search
+function showSearchedWeather(response) {
     currentTemp = Math.round(response.data.main.temp);
     tempHeading.innerHTML = `${currentTemp}`;
-    let cityHeading = document.querySelector("#city-heading");
     let cityName = `${response.data.name}`;
     cityHeading.innerHTML = `${cityName}, ${response.data.sys.country}`;
 
@@ -49,37 +48,59 @@ function showWeather(response) {
       wind.innerHTML = `${windData}` + `${windUnit[0]}`;
       //Update Humidity
       let humidityData = Math.round(response.data.main.humidity);
-      let humidity = document.querySelector("#humidity");
       humidity.innerHTML = `${humidityData}%`;
       
     //Update Description
     let descriptionData = (response.data.weather[0].description).toUpperCase();
-    let description = document.querySelector("#weather-description");
     description.innerHTML = `${descriptionData}`;
     
     //Update Icon
-    let weatherIcon = document.querySelector("#weather-icon");
     weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   }
 
-//Show location weather by form search field
 let searchField = document.querySelector("#search-form");
 function weatherDataSearch(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("#search-field").value;
 apiUrl = apiUrl + `&q=${searchedCity}&units=${unit[0]}`;
-  axios.get(apiUrl).then(showWeather);
+  axios.get(apiUrl).then(showSearchedWeather);
 }
 searchField.addEventListener("submit", weatherDataSearch);
 
-//Show current location weather on button click + load
+//Show current location weather on geo button click + load
+function showGeoWeather(response) {
+  console.log(response);
+  currentTemp = Math.round(response.data.main.temp);
+  tempHeading.innerHTML = `${currentTemp}`;
+  let geoCityName = `${response.data.name}`;
+  cityHeading.innerHTML = `${geoCityName}, ${response.data.sys.country}`;
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+
+    //Update Wind
+    windData = Math.round(response.data.wind.speed);
+    wind.innerHTML = `${windData}` + `${windUnit[0]}`;
+
+    //Update Humidity
+    let humidityData = Math.round(response.data.main.humidity);
+    humidity.innerHTML = `${humidityData}%`;
+    
+  //Update Description
+  let descriptionData = (response.data.weather[0].description).toUpperCase()
+  description.innerHTML = `${descriptionData}`;
+  
+  //Update Icon
+  weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+}
+
 function getLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
   function showPosition(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
     apiUrl = apiUrl + `&lat=${lat}&lon=${lon}&units=${unit[0]}`;
-    axios.get(apiUrl).then(showWeather);
+    axios.get(apiUrl).then(showGeoWeather);
 }
 }
 
@@ -88,7 +109,7 @@ let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getLocation);
 
 //Show current location weather on load
-getLocation();
+//getLocation();
 
 //Update BKG Gradient based on time of day
 let bkgGradient = document.querySelector('#today-section');
@@ -131,10 +152,14 @@ let windUnit = [
   "mph",
   "km/h",
 ] ;
-let wind = document.querySelector("#wind");
 let windData = null;
 let newUnit = null;
+let currentTemp = null;
 let apiKey = "d99d532213301980bc66856f61cac4e9";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?&appid=${apiKey}`;
 let tempHeading = document.querySelector("#current-temperature");
-let currentTemp = null;
+let wind = document.querySelector("#wind");
+let cityHeading = document.querySelector("#city-heading");
+let description = document.querySelector("#weather-description");
+let weatherIcon = document.querySelector("#weather-icon");
+let humidity = document.querySelector("#humidity");
