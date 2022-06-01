@@ -116,40 +116,7 @@ let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getLocation);
 
 //Show Current Location on Load
-function showCurrentWeather(response) {
-  console.log(response.data.name);
-  currentTemp = Math.round(response.data.main.temp);
-  tempHeading.innerHTML = `${currentTemp}`;
-  let searchedhCity = `${response.data.name}`;
-  cityHeading.innerHTML = `${searchedhCity}, ${response.data.sys.country}`;
-
-    //Update Wind
-    windData = Math.round(response.data.wind.speed);
-    wind.innerHTML = `${windData}` + `${windUnit[0]}`;
-
-    celsiusLink.classList.remove("active");
-    fahrenheitLink.classList.add("active");
-  
-    //Update Humidity
-    let humidityData = Math.round(response.data.main.humidity);
-    humidity.innerHTML = `${humidityData}%`;
-    
-  //Update Description
-  let descriptionData = (response.data.weather[0].description).toUpperCase();
-  description.innerHTML = `${descriptionData}`;
-  
-  //Update Icon
-  weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-}
-  //Gathering location info
-  navigator.geolocation.getCurrentPosition(showPosition);
-  function showPosition(position) {
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit[0]}`;
-    axios.get(apiUrl).then(showCurrentWeather);
-  }
- 
+getLocation();
 
 //Update BKG Gradient based on time
 
@@ -204,3 +171,4 @@ let humidity = document.querySelector("#humidity");
 let description = document.querySelector("#weather-description");
 let weatherIcon = document.querySelector("#weather-icon");
 let cityHeading = document.querySelector("#city-heading");
+
