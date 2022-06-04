@@ -172,3 +172,23 @@ let description = document.querySelector("#weather-description");
 let weatherIcon = document.querySelector("#weather-icon");
 let cityHeading = document.querySelector("#city-heading");
 
+// Display Forecast
+let forecastHTML = `<div class="row">`;
+function displayForecast() {
+  let days = ["Tuesday, April 19", "Tues"];
+  days.forEach(
+    function (day) {
+    forecastHTML = forecastHTML + 
+    `<div class="col-8 next-day-row">
+     <span><i class="fa-solid fa-sun"></i> ${day}</span>
+     </div>
+     <div class="col-4 next-weather"><strong>78°</strong>/58°</div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+let forecastElement = document.querySelector("#forecast");
+forecastElement.innerHTML = forecastHTML;
+
+}
+
+displayForecast();
