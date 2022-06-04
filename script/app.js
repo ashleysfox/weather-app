@@ -45,23 +45,23 @@ function showWeather(response) {
   tempHeading.innerHTML = `${currentTemp}`;
   cityHeading.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
 
-    //Update Wind
-    windData = Math.round(response.data.wind.speed);
-    wind.innerHTML = `${windData}` + `${windUnit[0]}`;
+  //Update Wind
+  windData = Math.round(response.data.wind.speed);
+  wind.innerHTML = `${windData}` + `${windUnit[0]}`;
   
-    celsiusLink.classList.remove("active");
-    fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   
-    //Update Humidity
-    let humidityData = Math.round(response.data.main.humidity);
-    humidity.innerHTML = `${humidityData}%`;
+  //Update Humidity
+  let humidityData = Math.round(response.data.main.humidity);
+  humidity.innerHTML = `${humidityData}%`;
     
   //Update Description
   let descriptionData = (response.data.weather[0].description).toUpperCase();
   description.innerHTML = `${descriptionData}`;
   
-   //Update Icon
-   weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  //Update Icon
+  weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
   getForecast(response.data.coord);
 
@@ -95,7 +95,6 @@ function replaceWeatherData(event) {
 searchField.addEventListener("submit", replaceWeatherData);
 
 //Update BKG Gradient based on time
-
 let bkgGradient = document.querySelector('#today-section');
 let hour = newDate.getHours();
 if (hour > 17) {
@@ -112,7 +111,6 @@ function showCelsiusTemp(event){
   tempHeading.innerHTML = Math.round(celsiusTemp);
   let metricWindSpeed = Math.round(windData * 1.609);
   wind.innerHTML = `${metricWindSpeed}` + `${windUnit[1]}`;
-
 }
 
 function showFahrenheitTemp(event){
@@ -143,7 +141,6 @@ function displayForecast() {
 
 let forecastElement = document.querySelector("#forecast");
 forecastElement.innerHTML = forecastHTML;
-
 }
 
 function getForecast(coordinates) {
