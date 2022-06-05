@@ -139,8 +139,7 @@ let forecastHTML = "";
 function displayForecast(response) {
   let forecast = response.data.daily;
   console.log(forecast);
-  forecast.forEach(
-    function (forecastDay, index) {
+  forecast.forEach(function (forecastDay, index) {
       if (index < 5) {  
     forecastHTML = forecastHTML + 
     `<div class="col-8 next-day-row">
