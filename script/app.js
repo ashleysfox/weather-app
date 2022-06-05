@@ -127,17 +127,33 @@ fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
 // Display Forecast
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sunday", "Monday", "Tueday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  return days[day + 1];
+}
+
 let forecastHTML = "";
-function displayForecast() {
-  let days = ["Tuesday, April 19", "Tues"];
-  days.forEach(
-    function (day) {
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  console.log(forecast);
+  forecast.forEach(
+    function (forecastDay, index) {
+      if (index < 6) {  
     forecastHTML = forecastHTML + 
     `<div class="col-8 next-day-row">
-     <span><i class="fa-solid fa-sun"></i> ${day}</span>
+     <span>
+     <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+     alt=""
+     width="30"/>
+     ${formatDay(forecastDay.dt)}</span>
      </div>
-     <div class="col-4 next-weather"><strong>78°</strong>/58°</div>`;
-  });
+     <div class="col-4 next-weather">
+     <strong>${Math.round(forecastDay.temp.max)}°</strong>/
+    ${Math.round(forecastDay.temp.min)}°</div>`;
+  }});
 
 let forecastElement = document.querySelector("#forecast");
 forecastElement.innerHTML = forecastHTML;
