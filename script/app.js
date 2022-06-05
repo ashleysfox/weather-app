@@ -42,7 +42,7 @@ console.log(newDate);
 function showWeather(response) {
   console.log(response);
   currentTemp = Math.round(response.data.main.temp);
-  tempHeading.innerHTML = `${currentTemp}`;
+  tempHeading.innerHTML = `${currentTemp}°`;
   cityHeading.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
 
   //Update Wind
@@ -108,7 +108,7 @@ function showCelsiusTemp(event){
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   let celsiusTemp = (currentTemp - 32) * .5556;
-  tempHeading.innerHTML = Math.round(celsiusTemp);
+  tempHeading.innerHTML = `${Math.round(celsiusTemp)}°`;
   let metricWindSpeed = Math.round(windData * 1.609);
   wind.innerHTML = `${metricWindSpeed}` + `${windUnit[1]}`;
 }
@@ -117,7 +117,7 @@ function showFahrenheitTemp(event){
   event.preventDefault();
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  tempHeading.innerHTML = currentTemp;
+  tempHeading.innerHTML = `${currentTemp}°`;
   wind.innerHTML = `${windData}` + `${windUnit[0]}`;
 }
 
@@ -136,10 +136,12 @@ function formatDay(timestamp) {
 }
 
 
-let forecastHTML = "";
+
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "";
   console.log(forecast);
   forecast.forEach(function (forecastDay, index) {
       if (index < 5) {  
@@ -154,9 +156,11 @@ function displayForecast(response) {
      <div class="col-4 next-weather">
      <strong>${Math.round(forecastDay.temp.max)}°</strong>/
     ${Math.round(forecastDay.temp.min)}°</div>`;
-    let forecastElement = document.querySelector("#forecast");
-    forecastElement.innerHTML = forecastHTML;
-  }});}
+
+  }});
+
+  forecastElement.innerHTML = forecastHTML;
+}
 
 function getForecast(coordinates) {
   let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${unit[0]}&appid=${apiKey}`;

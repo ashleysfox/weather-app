@@ -40,19 +40,25 @@
         <!--Today Section-->
         <div class="row">
         <div class="col-7">
-          <h2 class="current-city" id="city-heading">Mordor</h2>
-          <h1><span class="current-temperature" id="current-temperature">95</span>°</h1><span class="further-details">°<a href="#" id="celsius" class="">C</a>  /  °<a href="#" id="fahrenheit" class="active">F</a></span>
+          <h2 class="current-city" id="city-heading">
+
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+          </h2>
+          <h1><span class="current-temperature" id="current-temperature"></span></h1><span class="further-details">°<a href="#" id="celsius" class="">C</a>  /  °<a href="#" id="fahrenheit" class="active">F</a></span>
         </div>
         <div class="col-5 weather-type">
           <img src="http://openweathermap.org/img/wn/01n@2x.png" id="weather-icon" class="weather-icon" alt="Weather Conditions Icon">
         </div>
       </div>
       <div>
-          <h3 class="date-today" id="date-today">Monday, April 8</h3>
+          <h3 class="date-today" id="date-today"></h3>
           <p class="further-details">
-            <div class="further-details-item" id="weather-description">CLEAR</div>
-            <span class="further-details-item"><i class="fa-solid fa-droplet"></i> Humidity: <span id="humidity">0%</span></span>
-            <span class="further-details-item"><i class="fa-solid fa-wind"></i> Wind: <span id="wind">20mph</span></span>
+            <div class="further-details-item" id="weather-description"></div>
+            <span class="further-details-item"><i class="fa-solid fa-droplet"></i> Humidity: <span id="humidity"></span></span>
+            <span class="further-details-item"><i class="fa-solid fa-wind"></i> Wind: <span id="wind"></span></span>
           </p>
         </div>
       </div>
@@ -61,15 +67,7 @@
       <!--Next 5 Days Section-->
       <div class="row next-days-section">
         <h3 class="next-days-header">Next 5 Days:</h3>
-        <div class="row" id="forecast">
-
-          <div class="col-8 next-day-row">
-            <span><i class="fa-solid fa-sun"></i> Monday</span>
-            </div>
-            <div class="col-4 next-weather">
-            <strong>109°</strong>/45°</div>`
-        </div>
-       
+        <div class="row" id="forecast">       
       </div>
     </div>
   </div>
