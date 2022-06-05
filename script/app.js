@@ -135,13 +135,15 @@ function formatDay(timestamp) {
   return days[day + 1];
 }
 
+
 let forecastHTML = "";
+
 function displayForecast(response) {
   let forecast = response.data.daily;
   console.log(forecast);
   forecast.forEach(function (forecastDay, index) {
       if (index < 5) {  
-    forecastHTML = forecastHTML + 
+    forecastHTML = forecastHTML +
     `<div class="col-8 next-day-row">
      <span>
      <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
@@ -152,11 +154,9 @@ function displayForecast(response) {
      <div class="col-4 next-weather">
      <strong>${Math.round(forecastDay.temp.max)}°</strong>/
     ${Math.round(forecastDay.temp.min)}°</div>`;
-  }});
-
-let forecastElement = document.querySelector("#forecast");
-forecastElement.innerHTML = forecastHTML;
-}
+    let forecastElement = document.querySelector("#forecast");
+    forecastElement.innerHTML = forecastHTML;
+  }});}
 
 function getForecast(coordinates) {
   let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${unit[0]}&appid=${apiKey}`;
