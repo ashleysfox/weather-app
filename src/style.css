@@ -11,25 +11,20 @@
     font-family: "Ubuntu Mono", monospace;
   }
 
-  .today-section-day {
-    background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  .today-section-night, .today-section-day {
     border-radius: 0 0 100px 100px;
     margin: 0 auto 50px auto;
     padding: 50px 30px 40px 30px;
-  
-  }
-
-  .today-section-night {
-    background: linear-gradient(to top, #ace0f9 0%, #d3cae6 100%);
-    border-radius: 0 0 100px 100px;
-    margin: 0 auto 50px auto;
-    padding: 50px 30px 40px 30px;
-  
   }
 
   .next-days-section {
     padding: 0 30px 40px 30px;
   }
+
+  button {
+    display: none;
+  }
+
 }
 
 @media only screen and (min-width: 460px) {
@@ -49,17 +44,7 @@
     max-width: 650px;
   }
 
-  .today-section-day {
-    background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-    border-radius: 16.5px 16.5px 100px 100px;
-    margin: 0 auto 50px auto;
-    max-width: 650px;
-    padding: 50px 50px 40px 50px;
-  
-  }
-
-  .today-section-night {
-    background: linear-gradient(to top, #ace0f9 0%, #d3cae6 100%);
+  .today-section-night, .today-section-day {
     border-radius: 18px 18px 100px 100px;
     margin: 0 auto 50px auto;
     max-width: 650px;
@@ -70,11 +55,6 @@
   .next-days-section {
     padding: 0 60px 40px 60px;
   }
-
-  button {
-    display: none;
-  }
-
 }
 
 h1,
@@ -123,14 +103,21 @@ a:hover {
   text-decoration: underline;
 }
 
+.today-section-day {
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
 
-.active {
-  color: black;
-  pointer-events: none;
+.today-section-night {
+  background: linear-gradient(to top, #ace0f9 0%, #d3cae6 100%);
 }
 
 #search-field {
   width: 50%;
+ }
+
+.active {
+  color: black;
+  pointer-events: none;
 }
 
 #weather-description {
