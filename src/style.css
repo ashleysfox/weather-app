@@ -21,7 +21,7 @@
     padding: 0 30px 40px 30px;
   }
 
- button {
+ #current-location {
     display: none;
   }
 
@@ -88,7 +88,6 @@ button {
   letter-spacing: 2px;
   padding: 10px 15px;
   text-transform: uppercase;
-  cursor: pointer;
 
 }
 
@@ -115,14 +114,18 @@ a:hover {
   width: 50%;
  }
 
+#weather-description {
+   letter-spacing: 2px;
+   font-weight: 600;
+ }
+
+#submit-button {
+  cursor: pointer;
+}
+
 .active {
   color: black;
   pointer-events: none;
-}
-
-#weather-description {
-  letter-spacing: 2px;
-  font-weight: 600;
 }
 
 .btn-outline-secondary {
