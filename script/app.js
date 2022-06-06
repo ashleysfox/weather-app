@@ -130,13 +130,10 @@ celsiusLink.addEventListener("click", showCelsiusTemp);
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sunday", "Monday", "Tueday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
   return days[day + 1];
 }
-
-
-
 
 function displayForecast(response) {
   let forecast = response.data.daily;
