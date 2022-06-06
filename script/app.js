@@ -1,3 +1,23 @@
+//Msc Global Items
+let unit = [
+  "imperial",
+  "metric",
+];
+let windUnit = [
+  "mph",
+  "km/h",
+] ;
+let apiKey = "d99d532213301980bc66856f61cac4e9";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?&appid=${apiKey}`;
+let cityHeading = document.querySelector("#city-heading");
+let currentTemp = null;
+let description = document.querySelector("#weather-description");
+let humidity = document.querySelector("#humidity");
+let tempHeading = document.querySelector("#current-temperature");
+let weatherIcon = document.querySelector("#weather-icon");
+let wind = document.querySelector("#wind");
+let windData = null;
+
 //Add Current Date/Time
 let newDate = new Date();
 
@@ -36,11 +56,8 @@ todaysDate.innerHTML = `${days[newDate.getDay()]}, ${
   months[newDate.getMonth()]
 } ${newDate.getDate()} at ${newDate.getHours()}:${minutes}`;
 
-console.log(newDate);
-
 //Show current location weather on click
 function showWeather(response) {
-  console.log(response);
   currentTemp = Math.round(response.data.main.temp);
   tempHeading.innerHTML = `${currentTemp}°`;
   cityHeading.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
@@ -63,6 +80,7 @@ function showWeather(response) {
   //Update Icon
   weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
+  //Initiate Forecast
   getForecast(response.data.coord);
 
 }
@@ -80,8 +98,13 @@ function getLocation() {
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getLocation);
 
-//Show Current Location on Load
-getLocation();
+//Show Location on Load
+function search(city) {
+  cityApiUrl = apiUrl + `&q=${city}&units=${unit[0]}`;
+  axios.get(cityApiUrl).then(showWeather);
+}
+
+search("Boston");
 
 //Display weather based on search field
 let searchField = document.querySelector("#search-form");
@@ -139,7 +162,6 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
-  console.log(forecast);
   forecast.forEach(function (forecastDay, index) {
       if (index < 5) {  
     forecastHTML = forecastHTML +
@@ -163,23 +185,3 @@ function getForecast(coordinates) {
   let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${unit[0]}&appid=${apiKey}`;
   axios.get(forecastApiUrl).then(displayForecast);
 }
-
-//Msc Global Items
-let unit = [
-  "imperial",
-  "metric",
-];
-let windUnit = [
-  "mph",
-  "km/h",
-] ;
-let apiKey = "d99d532213301980bc66856f61cac4e9";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?&appid=${apiKey}`;
-let cityHeading = document.querySelector("#city-heading");
-let currentTemp = null;
-let description = document.querySelector("#weather-description");
-let humidity = document.querySelector("#humidity");
-let tempHeading = document.querySelector("#current-temperature");
-let weatherIcon = document.querySelector("#weather-icon");
-let wind = document.querySelector("#wind");
-let windData = null;
