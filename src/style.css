@@ -71,6 +71,10 @@
     padding: 0 60px 40px 60px;
   }
 
+  button {
+    display: none;
+  }
+
 }
 
 h1,
