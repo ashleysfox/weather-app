@@ -155,7 +155,7 @@ function formatDay(timestamp) {
   let day = date.getDay();
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-  return days[day + 1];
+  return days[day];
 }
 
 function displayForecast(response) {
@@ -163,7 +163,7 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
   forecast.forEach(function (forecastDay, index) {
-      if (index < 5) {  
+    if (index > 0 && index < 5) { {  
     forecastHTML = forecastHTML +
     `<div class="col-8 next-day-row">
      <span>
